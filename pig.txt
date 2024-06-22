@@ -1,0 +1,47 @@
+Il s'agit d'un outil ou d'une plateforme qui permet d'analyser de grands ensembles de
+données en les représentant sous forme de flux de données. Pig est généralement
+utilisé avec Hadoop ; nous pouvons effectuer toutes les opérations de manipulation
+de données dans Hadoop à l'aide d'Apache Pig.
+Pour écrire des programmes d'analyse de données, Pig fournit un langage de haut
+niveau appelé Pig Latin. Ce langage fournit divers opérateurs à l'aide desquels les
+programmeurs peuvent développer leurs propres fonctions de lecture, d'écriture et de
+traitement des données.
+---------------------------------------------------------------------
+PigStorage
+data = LOAD 'hdfs:///user/cloudera/input/data.csv' USING PigStorage(',') AS (column1:int, column2:chararray, column3:float);
+--------------------------------------------------------------------
+BinStorage
+est utilisé pour charger des données binaires. C'est plus efficace en termes de stockage et de performances pour les opérations de lecture et d'écriture.
+data = LOAD 'hdfs:///user/cloudera/input/data.bin' USING BinStorage() AS (column1:int, column2:chararray, column3:float);
+
+---------------------------------------------------------------------
+TextLoader
+ est utilisé pour charger des données non structurées où chaque ligne est considérée comme une seule valeur de type chararray.
+data = LOAD 'hdfs:///user/cloudera/input/data.txt' USING TextLoader() AS (line:chararray);
+----------------------------------------------------------------------
+
+JsonLoader
+ est utilisé pour charger des données au format JSON. Cela nécessite que les données JSON soient correctement formatées.
+data = LOAD 'hdfs:///user/cloudera/input/data.json' USING JsonLoader('column1:int, column2:chararray, column3:float');
+---------------------------------------------------------------------
+Hive est utilisé principalement pour traiter et analyser de grandes quantités de données stockées dans des systèmes de fichiers distribués comme Hadoop HDFS. Les besoins spécifiques incluent :
+
+Traitement de Grandes Données : Hive permet de gérer et d'analyser des ensembles de données volumineux efficacement.
+Langage SQL-Like : Hive utilise HiveQL, un langage similaire à SQL, facilitant l'analyse de données pour les utilisateurs familiers avec SQL.
+Compatibilité avec Hadoop : Hive est conçu pour s'intégrer de manière transparente avec le cadre Hadoop, utilisant ses capacités de stockage et de traitement distribué.
+Flexibilité : Hive permet de lire des données de différentes sources et formats, ce qui est essentiel pour des environnements big data hétérogènes.
+Scalabilité : Hive peut évoluer pour traiter des pétaoctets de données, grâce à son intégration avec l'écosystème Hadoop.
+----------------------------------------------------------------
+HiveQL (Hive Query Language) est un langage de requête basé sur SQL utilisé pour interroger et gérer des données dans Apache Hive. HiveQL permet aux utilisateurs de :
+
+Créer et Gérer des Bases de Données et des Tables : Définir la structure des données et organiser le stockage.
+Effectuer des Requêtes Complexes : Exécuter des opérations de filtrage, de regroupement et d'agrégation sur des ensembles de données volumineux.
+Manipuler les Données : Insérer, mettre à jour et supprimer des enregistrements.
+Intégration avec Hadoop : HiveQL traduit les requêtes en jobs MapReduce, Tez ou Spark, permettant le traitement distribué des données.
+-------------------------------------------------------------------
+
+b. Quel est le besoin derrière l’utilisation de HBase ?
+HBase est une base de données NoSQL distribuée, inspirée par Bigtable de Google et intégrée avec le système de fichiers distribué Hadoop (HDFS). Voici les principaux besoins et avantages derrière l'utilisation de HBase :
+Gestion des Données Non-Structurées 
+Stockage Distribué :
+Scalabilité Horizontale :
